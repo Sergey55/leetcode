@@ -10,17 +10,18 @@ import unittest
 
 class Solution:
     def reverse(self, x: int) -> int:
-        result = str(x)[::-1]
+        result = 0
 
-        if result[-1] == '-':
-            result = '-' + result[:-1]
+        temp_x = abs(x)
 
-        r = int(result)
+        while temp_x:
+            result = result * 10 + temp_x % 10
+            temp_x //= 10
 
-        if (r > 2**31-1) or (r < -2**31):
+        if (result < -2**31) or (result > 2**31 - 1):
             return 0
-        else:
-            return r
+
+        return result if x > 0 else -1 * result
 
 class TestsForSolution(unittest.TestCase):
 
