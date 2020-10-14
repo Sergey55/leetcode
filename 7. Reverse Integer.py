@@ -7,8 +7,9 @@
 # of this problem, assume that your function returns 0 when the reversed 
 # integer overflows.
 #
-# Score: Runtime: 24 ms, faster than 96.73% of Python3 online submissions for Reverse Integer.
-# Memory Usage: 14.1 MB, less than 99.98% of Python3 online submissions for Reverse Integer.
+# Score: 
+#   Runtime: 24 ms, faster than 96.73% of Python3 online submissions for Reverse Integer.
+#   Memory Usage: 14.1 MB, less than 99.98% of Python3 online submissions for Reverse Integer.
 
 import unittest
 
