@@ -13,17 +13,20 @@ import unittest
 
 class Solution:
     def isPalindrome(self, x: int) -> bool:
-        if x < 0:
+        # Obviosly all negative numbers not a palindrome
+        if x < 0 or (x % 10 == 0 and x != 0):
             return False
         
-        tmp = x
-        digits = []
+        originalNumber = x
+        revertNumber = 0
 
-        while tmp:
-            digits.append(tmp % 10)
-            tmp //= 10
+        while revertNumber < originalNumber:
+            revertNumber = revertNumber * 10 + originalNumber % 10
+            originalNumber //= 10
 
-        return digits == digits[::-1]
+        print(revertNumber, originalNumber)
+
+        return (revertNumber == originalNumber) or ((revertNumber // 10) == originalNumber)
 
 class TestsForSolution(unittest.TestCase):
     def test_no_1(self):
