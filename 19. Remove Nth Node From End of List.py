@@ -16,26 +16,21 @@ class ListNode:
 
 class Solution:
     def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
-        node = head
-        counter = 1
-        
-        dummy = ListNode(0, head)
-        
-        d = {0: dummy}
+        size = 1
+        current = previous = head
 
-        while node:
-            d[counter] = node
-            node = node.next
+        while current.next:
+            size += 1
+            current = current.next
 
-            counter += 1
+            if size > n + 1:
+                previous = previous.next
 
-        d[counter] = node
-            
-        pr, nxt = (counter - (n + 1)), (counter - (n - 1))
-
-        d[pr].next = d[nxt]
-
-        return dummy.next
+        if size == n:
+            return head.next
+        else:
+            previous.next = previous.next.next
+            return head
 
 class TestsForSolution(unittest.TestCase):
     def test_no_0_1(self):
