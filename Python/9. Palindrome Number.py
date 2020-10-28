@@ -6,7 +6,7 @@
 #   Could you solve it without converting the integer to a string?
 #
 # Score: 
-#   Runtime: 56 ms, faster than 83.00% of Python3 online submissions for Palindrome Number.
+#   Runtime: 52 ms, faster than 90.65% of Python3 online submissions for Palindrome Number.
 #   Memory Usage: 14.1 MB, less than 100.00% of Python3 online submissions for Palindrome Number.
 
 import unittest
@@ -23,8 +23,6 @@ class Solution:
         while revertNumber < originalNumber:
             revertNumber = revertNumber * 10 + originalNumber % 10
             originalNumber //= 10
-
-        print(revertNumber, originalNumber)
 
         return (revertNumber == originalNumber) or ((revertNumber // 10) == originalNumber)
 

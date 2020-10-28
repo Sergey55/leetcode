@@ -18,29 +18,18 @@ class Solution:
         if ln < 3:
             return []
 
+        results = []
+
         nums.sort()
 
-        results = []
-        resultsSet = set()
+        lookup = {(a + b): (ai, bi) for ai, a in enumerate(nums) for bi, b in enumerate(nums) if ai != bi}
 
-        for i in range(ln - 2):
-            v = nums[i]
+        for i, v in enumerate(nums):
+            if v in lookup:
+                left, right = lookup[v]
 
-            left = i + 1
-            right = ln - 1
-
-            while left < right:
-                s = nums[left] + nums[right] + v
-
-                if (s == 0) and (v, nums[left], nums[right]) not in resultsSet:
-                    results.append([v, nums[left], nums[right]])
-                    resultsSet.add((v, nums[left], nums[right]))
-                    left += 1
-                    right -= 1
-                elif s < 0:
-                    left += 1
-                else:
-                    right -= 1
+                if left != i and right != i:
+                    results.append([i, nums[left], nums[right]])
 
         return results
         
